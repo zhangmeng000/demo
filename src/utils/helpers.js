@@ -12,7 +12,7 @@ function searchGit(add){
 export { searchGit }
 
 function searchCard(){
-  let address = `https://raw.githubusercontent.com/zhangmeng000/demodata/master/Card.json`
+  let address = `https://raw.githubusercontent.com/zhangmeng000/demodata/master/Card.json?${Math.random()}`
   return axios.get(address)
   .then((res) => (
     {  getCard:res.data }
