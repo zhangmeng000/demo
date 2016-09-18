@@ -35,7 +35,7 @@ class Work extends React.Component {
     return(
       <div className="container-fluid">
         <div className="row" style={{marginTop:'20px'}}>
-          {this.state.wait ? '等' : cards}
+          {this.state.wait ? '稍后' : cards}
         </div>
       </div>
     )
