@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import axios from 'axios';
+import{ searchGit} from './utils/helpers'
 
 class About extends React.Component {
   constructor(){
@@ -10,25 +10,19 @@ class About extends React.Component {
     }
   }
   componentDidMount(){
-    axios.get('https://api.github.com/users/newming')
-      .then((res) => {
-        // console.log(res.data);
-        this.setState({
-          data:res.data,
-          wait:false
-        })
+    searchGit()
+    .then((data)=>{
+      this.setState({
+        data:data.data,
+        wait:false
       })
-      .catch(function (error) {
-        alert(error);
-      });
+    })
   }
   render () {
     return(
       <div>
-        {
-          this.state.wait ? '正在获取数据' :
-          <img src={this.state.data.avatar_url} />
-        }
+        <h1>{this.state.data.name}</h1>
+        <img src={this.state.data.avatar_url} />
       </div>
     )
   }
