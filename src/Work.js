@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Card from './components/Card';
-
+import { searchCard } from './utils/helpers'
 import Bg from './image/home1.jpg';
 
 let cardData = [
@@ -12,11 +12,30 @@ let cardData = [
 ]
 
 class Work extends React.Component {
+  constructor(){
+    super();
+    this.state={
+      data:[],
+      wait:true,
+    }
+  }
+  componentDidMount(){
+    searchCard()
+    .then( (recData) => {
+      console.log(recData.getCard)
+      this.setState({
+        data:recData.getCard,
+        wait:false
+      })
+
+    })
+  }
   render () {
+    let cards = this.state.data.map((item,i) => <Card {...item} key={i} />)
     return(
       <div className="container-fluid">
         <div className="row" style={{marginTop:'20px'}}>
-          {cardData.map( (item,i) => <Card {...item} key={i} /> )}
+          {this.state.wait ? '等' : cards}
         </div>
       </div>
     )
