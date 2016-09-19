@@ -1,5 +1,11 @@
 # little-demo
+<<<<<<< HEAD
 1606脱产小demo
+
+```js
+
+=======
+1606脱产小dem
 
 ```js
 
@@ -15,5 +21,6 @@ function searchGit(add){
   });
 }
 export { searchGit }
+
 
 ```
